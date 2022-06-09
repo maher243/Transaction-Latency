@@ -7,21 +7,22 @@ from statistics import mean, median, stdev
 
 class Sim(object):
 
-   #*"" Define configurable input parameters
-        Binterval = 7 #13.48 # average of Nov 2021  # Average time (in seconds)for creating a block in the blockchain
+
+######################################################## Set configurable input parameters #####################################################################
+        Binterval = 13.48  # Average block interval time (in seconds). The time between two consecutive blocks
         Blimit = 30000000 #The block gas limit
-        Tn = 2000 # The rate of the number of transactions to be created per second
-        Butilization= 1 # The block utilization level (0 to 1), 1 indicates all blocks are full
-        simTime = 1350 # The simulation time in seconds to target 100 blocks
-        transactionsPool=[]
-        blockchain=[]
-        timer=0
-        runs=2
+        Tn = 2000 # The arrival rate for transactions (i.e., the number of transactions to be created per second)
+        Butilization= 1 # The block utilization level (it ranges from 0.0 to 1.0), where 0.0 indicates empty blocks and 1.0 indicates all blocks are full
+        simTime = 1350 # The length of the simulation time in seconds, corresponding to the real blockchain time
+        timer=0 # It indicates the current simulation time, where 0 indicates the simulator has not yet started
+        runs=2 # Number of simulation runs
      
+        network_pending_tx=[] # List of unconfirmed transactions
+	transactionsPool=[] # Transaction memory-pool
+        blockchain=[] # The blockchain ledger
+        
 
-    #*"" Define configurable input parameters
-        network_pending_tx=[]
-
+######################################################## Transaction Classess #####################################################################
 
 class Transaction(object):
     """ Define Ethereum Transaction
@@ -133,6 +134,7 @@ class FullTransaction():
             #return transactions, limit
             currentTime += Sim.Binterval 
 
+######################################################## Block Class #####################################################################
 
 class Block():
 
@@ -173,6 +175,8 @@ class Block():
         self.gaslimit= gaslimit
         self.usedgas= usedgas
 
+
+######################################################## Main Method #####################################################################
 
 def main():
 
@@ -224,6 +228,7 @@ def main():
             Sim.blockchain=[]
             Sim.transactionsPool=[]
             Sim.timer=0
+######################################################## Saving Simulation Results in Excel files #####################################################################
 
     df = pd.DataFrame(transactionsList)
     df.columns = ['ID','Timestamp', 'Used Gas','Gas Price', 'Fee','Inclusion Time','Latency']
