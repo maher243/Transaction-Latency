@@ -16,18 +16,23 @@ Before you can use BlockSim  simulator, you need to have **Python version 3 or a
 
 ## Running the simulator
 
-Before you run the simulator, you can access the configuration file *InputsConfig.py* to choose the model of interest (Base Model 0, Bitcoin Model 1 and Ethereum Model 2) and to set up the related parameters.
-The parameters include the number of nodes (and their fraction of hash power), the block interval time, the block propagation delays, the block and transaction sizes, the block rewards, the tranaction fees etc.
-Each model has a slightly different (or additional) parameters to capture it.
+Before you run the simulator, you need to configure the input parameter for the simulator by accessing the *Sim.py* class. The paramters that need to be set the end user are:
 
-To run the simulator, one needs to trigger the main class *Main.py* either from the command line
-> python Main.py
+        Binterval -> Average block interval time (in seconds). The time between two consecutive blocks
+        Blimit -> The block gas limit
+        Tn ->  The arrival rate for transactions (i.e., the number of transactions to be created per second)
+        Butilization -> The block utilization level (it ranges from 0.0 to 1.0), where 0.0 indicates empty blocks and 1.0 indicates all blocks are full
+        simTime -> The length of the simulation time in seconds, corresponding to the real blockchain time
+        runs=2 -> Number of simulation runs
+        
+To run the simulator, one needs to trigger the *Sim.py* class either from the command line
+> python Sim.py
 
 or using any Python editor such as Spyder.
 
 ## Statistics and Results
 
-The results of the simulator is printed in an excel file at the end of the simulation. The results include the blockchain ledger, number of blocks mined, number of stale (uncles) blocks and the rewards gained by each miner etc. 
+The results of the simulator is printed in an excel file at the end of the simulation. The results include the blockchain ledger, number of blocks mined and details of transactions confirmed in the network. For every transaction, we record it gas related attributes, fees, creation time, time when it was recorded in the blockchain ledger and etc.
 
 ## Contact
 
