@@ -3,7 +3,7 @@ Discrete-event simulator for estimating transaction latency within permissionles
 
 ## Installation and Requirements
 
-Before you can use BlockSim  simulator, you need to have **Python version 3 or above** installed in your machine as well as have the following packages installed:
+Before you can use the simulator, you need to have **Python version 3 or above** installed in your machine as well as have the following packages installed:
 
 - pandas 
 >pip install pandas
