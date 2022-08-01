@@ -23,7 +23,7 @@ Before you run the simulator, you need to configure the input parameter for the 
         Tn ->  The arrival rate for transactions (i.e., the number of transactions to be created per second)
         Butilization -> The block utilization level (it ranges from 0.0 to 1.0), where 0.0 indicates empty blocks and 1.0 indicates all blocks are full
         simTime -> The length of the simulation time in seconds, corresponding to the real blockchain time
-        runs=2 -> Number of simulation runs
+        runs -> Number of simulation runs
         
 To run the simulator, one needs to trigger the *Sim.py* class either from the command line
 > python Sim.py
